@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <meta http-equiv="refresh" content="5"/>
+</head>
+<body>
+<h1><%= title %></h1>
+<div>
+    <h2>User stats</h2>
+    <table style="margin-bottom: 10px;">
+        <thead>
+        <tr>
+            <th>Runtime</th>
+            <th>Last Update</th>
+            <th>Users</th>
+            <th>Workers</th>
+            <th>Idle</th>
+            <th>Disconnected</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><%= usersStats.runtime %></td>
+            <td><%= new Date(usersStats.lastupdate).toLocaleString() %></td>
+            <td><%= usersStats.Users %></td>
+            <td><%= usersStats.Workers %></td>
+            <td><%= usersStats.Idle %></td>
+            <td><%= usersStats.Disconnected %></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Hash rate stats</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Hash Rate 1m</th>
+            <th>Hash Rate 5m</th>
+            <th>Hash Rate 15m</th>
+            <th>Hash Rate 1h</th>
+            <th>Hash Rate 6h</th>
+            <th>Hash Rate 1d</th>
+            <th>Hash Rate 7d</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><%= hashRateStats.hashrate1m %></td>
+            <td><%= hashRateStats.hashrate5m %></td>
+            <td><%= hashRateStats.hashrate15m %></td>
+            <td><%= hashRateStats.hashrate1hr %></td>
+            <td><%= hashRateStats.hashrate6hr %></td>
+            <td><%= hashRateStats.hashrate1d %></td>
+            <td><%= hashRateStats.hashrate7d %></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Users</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Hash Rate 1m</th>
+            <th>Hash Rate 5m</th>
+            <th>Hash Rate 1h</th>
+            <th>Hash Rate 1d</th>
+            <th>Hash Rate 7d</th>
+            <th>Last Update</th>
+            <th>Workers</th>
+            <th>Shares</th>
+            <th>Best Share</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% users.forEach(function(user) { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.hashrate1m %></td>
+                <td><%= user.hashrate5m %></td>
+                <td><%= user.hashrate1hr %></td>
+                <td><%= user.hashrate1d %></td>
+                <td><%= user.hashrate7d %></td>
+                <td><%= new Date(user.lastupdate).toLocaleString() %></td>
+                <td><%= user.workers %></td>
+                <td><%= user.shares %></td>
+                <td><%= user.bestshare %></td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Worker</th>
+                            <th>Hash Rate 1m</th>
+                            <th>Hash Rate 5m</th>
+                            <th>Hash Rate 1h</th>
+                            <th>Hash Rate 1d</th>
+                            <th>Hash Rate 7d</th>
+                            <th>Last Update</th>
+                            <th>Shares</th>
+                            <th>Best Share</th>
+                        </thead>
+                        <tbody>
+                        <% user.worker.forEach(function(worker) { %>
+                            <tr>
+                                <td><%= worker.workername %></td>
+                                <td><%= worker.hashrate1m %></td>
+                                <td><%= worker.hashrate5m %></td>
+                                <td><%= worker.hashrate1hr %></td>
+                                <td><%= worker.hashrate1d %></td>
+                                <td><%= worker.hashrate7d %></td>
+                                <td><%= new Date(worker.lastupdate).toLocaleString() %></td>
+                                <td><%= worker.shares %></td>
+                                <td><%= worker.bestshare %></td>
+                            </tr>
+                        <% }); %>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
