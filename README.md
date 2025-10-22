@@ -1,14 +1,14 @@
 # CKPool Client
 
-CKPool Client is a cli to visualize the mining statistics of your CKPool service.
+CKPool Client is a CLI to visualize the mining statistics of your CKPool service.
 
 ## About
 
-This project is means to be used in parallel with the CKPool mining pool service. The CkPool mining pool service define
-some json files that update periodically with mining statistics. This statistics are used by this client to visualize
+This project is meant to be used in parallel with the CKPool mining pool service. The CkPool mining pool service defines
+some JSON files that update periodically with mining statistics. These statistics are used by this client to visualize
 the mining performance.
 
-The files are located in the CKPool logs directory and has the following paths:
+The files are located in the CKPool logs directory and have the following paths:
 
 ```
 ├── pool
@@ -19,11 +19,11 @@ The files are located in the CKPool logs directory and has the following paths:
 │   ├── ...
 ```
 
-> All this files are json files that contains the mining statistics and performance of the pool and the users.
+> All these files are JSON files that contain the mining statistics and performance of the pool and the users.
 
 ## Installation
 
-I recommend use docker to run this client, and here I leave you a simple `Dockerfile` to build the image:
+I recommend using Docker to run this client, and here I leave you a simple `Dockerfile` to build the image:
 
 ```Dockerfile
 # dashboard.Dockerfile
@@ -43,7 +43,7 @@ EXPOSE 3000
 CMD ["node", "bin/www"]
 ```
 
-Then you can start the container with docker or in my case with docker-compose:
+Then you can start the container with Docker or, in my case, with docker-compose:
 
 ```yaml
 # docker-compose.yml
